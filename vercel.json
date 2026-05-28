@@ -5,9 +5,12 @@
     }
   },
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.php" },
+    { "src": "/((?!api).*\\.(?:css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot))", "dest": "/$1" },
     { "src": "/(css|img|js)/(.*)", "dest": "/$1/$2" },
-    { "src": "/index.php", "dest": "/api/index.php" },
-    { "src": "/", "dest": "/api/index.php" }
-  ]
+    { "src": "/([a-z]+)\\.php", "dest": "/api/$1.php" },
+    { "src": "/(.*)", "dest": "/api/index.php" }
+  ],
+  "env": {
+    "PHP_MEMORY_LIMIT": "512M"
+  }
 }

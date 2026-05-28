@@ -1,0 +1,11 @@
+{
+  "name": "cadastro-games",
+  "version": "1.0.0",
+  "description": "Sistema de cadastro de jogos",
+  "scripts": {
+    "start": "php -S localhost:8000"
+  },
+  "keywords": ["games", "cadastro"],
+  "author": "",
+  "license": "MIT"
+}
