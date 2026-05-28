@@ -6,3 +6,4 @@ DEPLOY.md
 .DS_Store
 node_modules/
 *.sql
+.gitignore

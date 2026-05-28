@@ -1,16 +1,20 @@
 {
+  "version": 2,
   "functions": {
     "api/**/*.php": {
       "runtime": "php:8.2"
     }
   },
   "routes": [
-    { "src": "/((?!api).*\\.(?:css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot))", "dest": "/$1" },
     { "src": "/(css|img|js)/(.*)", "dest": "/$1/$2" },
-    { "src": "/([a-z]+)\\.php", "dest": "/api/$1.php" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/test", "dest": "/api/test.php" },
+    { "src": "/menu", "dest": "/api/menu.php" },
+    { "src": "/jogos", "dest": "/api/jogos.php" },
+    { "src": "/acao", "dest": "/api/acao.php" },
+    { "src": "/gestao", "dest": "/api/gestao.php" },
+    { "src": "/editar", "dest": "/api/editar.php" },
+    { "src": "/excluir", "dest": "/api/excluir.php" },
     { "src": "/(.*)", "dest": "/api/index.php" }
-  ],
-  "env": {
-    "PHP_MEMORY_LIMIT": "512M"
-  }
+  ]
 }
