@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Elden Ring style background - Dark Fantasy Landscape */
+    background: url('../img/elden-1.jpg') center bottom / cover no-repeat fixed;
+    color: #e5e7eb;
+    font-family: 'Noto Serif', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 8, 8, 0.7), rgba(0, 0, 0, 0.95));
+    z-index: 0;
+}
+
+/* Subtle mist animation */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(220, 179, 109, 0.08) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    animation: pulseAbstract 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseAbstract {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.5); opacity: 1; }
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 52px;
+    color: #dcb36d;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 20px rgba(220, 179, 109, 0.5), 0 5px 10px rgba(0,0,0,0.8);
+    position: relative;
+    z-index: 1;
+    animation: epicDrop 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes epicDrop {
+    0% { transform: scale(1.5); opacity: 0; filter: blur(10px); }
+    100% { transform: scale(1); opacity: 1; filter: blur(0); }
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+    z-index: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #a3957a;
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    padding: 12px 25px;
+    border: 1px solid rgba(163, 149, 122, 0.3);
+    transition: all 0.4s ease;
+    background: rgba(10, 8, 8, 0.8);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; width: 0%; height: 2px;
+    background: #dcb36d;
+    transition: width 0.4s ease;
+}
+
+ul li a:hover {
+    color: #fff;
+    border-color: #dcb36d;
+    box-shadow: 0 0 20px rgba(220, 179, 109, 0.4) inset, 0 10px 20px rgba(0,0,0,0.8);
+    transform: translateY(-3px);
+}
+
+ul li a:hover::after { width: 100%; }
+
+form {
+    background: rgba(15, 12, 10, 0.75);
+    border: 1px solid rgba(220, 179, 109, 0.3);
+    padding: 50px;
+    width: 100%;
+    max-width: 650px;
+    z-index: 1;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+    position: relative;
+    backdrop-filter: blur(10px);
+    animation: fadeInForm 1.5s ease 0.5s backwards;
+}
+
+@keyframes fadeInForm {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ornate corners */
+form::before, form::after {
+    content: '';
+    position: absolute;
+    width: 30px; height: 30px;
+    border: 2px solid #dcb36d;
+    opacity: 0.8;
+}
+
+form::before { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+form::after { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #dcb36d;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-bottom: 1px solid #5c4a30;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 25px;
+    font-family: 'Noto Serif', serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus {
+    outline: none;
+    border-bottom: 1px solid #dcb36d;
+    background: rgba(220, 179, 109, 0.05);
+    box-shadow: inset 0 -10px 10px -10px rgba(220, 179, 109, 0.5);
+}
+
+input[type="submit"] {
+    width: 100%;
+    background: linear-gradient(to right, #1a1510, #3d342b, #1a1510);
+    color: #dcb36d;
+    border: 1px solid #5c4a30;
+    padding: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(to right, #3d342b, #dcb36d, #3d342b);
+    color: #0c0b0b;
+    border-color: #dcb36d;
+    box-shadow: 0 0 30px rgba(220, 179, 109, 0.6);
+    transform: scale(1.02);
+}
+
+div[message-sucess] {
+    color: #a3ffb4;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #a3ffb4;
+    background: rgba(163, 255, 180, 0.1);
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(163, 255, 180, 0.3);
+    animation: flash 1s ease;
+}
+
+div[message-error] {
+    color: #ff5e5e;
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ff5e5e;
+    background: rgba(255, 94, 94, 0.1);
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 94, 94, 0.3);
+    animation: shake 0.5s ease;
+}
+
+@keyframes flash {
+    0% { opacity: 0; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}

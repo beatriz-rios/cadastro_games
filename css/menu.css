@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    height: 100%;
+    color: #f3f4f6;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ============================================================
+   WRAPPER DO FUNDO — garante imagem em máxima qualidade
+   ============================================================ */
+#bg-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+}
+
+#bg-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    image-rendering: auto;
+    /* Máxima nitidez */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* Overlay escuro — mesmo padrão das outras páginas */
+#bg-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(circle at center, rgba(10, 8, 18, 0.65) 0%, rgba(5, 3, 10, 0.92) 100%);
+}
+
+/* ============================================================
+   CANVAS DE ANIMAÇÃO ABSTRATA
+   ============================================================ */
+#anim-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* ============================================================
+   CONTEÚDO
+   ============================================================ */
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 400;
+    color: #d6b876;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.9), 0 0 30px rgba(214,184,118,0.25);
+    animation: slideDownFade 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: #c8bfaa;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 60px;
+    z-index: 1;
+    position: relative;
+    text-shadow: 0 4px 14px rgba(0,0,0,0.8);
+    animation: slideUpFade 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s backwards;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    z-index: 1;
+    position: relative;
+}
+
+ul li {
+    animation: popIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+ul li:nth-child(1) { animation-delay: 0.5s; }
+ul li:nth-child(2) { animation-delay: 0.6s; }
+ul li:nth-child(3) { animation-delay: 0.7s; }
+ul li:nth-child(4) { animation-delay: 0.8s; }
+
+ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #e0d8c8;
+    width: 210px;
+    height: 62px;
+    border: 1px solid rgba(214, 184, 118, 0.35);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    background: rgba(8, 12, 22, 0.50);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+ul li a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(214, 184, 118, 0.08);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+ul li a:hover {
+    border-color: #d6b876;
+    color: #fff;
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 25px rgba(214, 184, 118, 0.35);
+}
+
+ul li a:hover::before {
+    transform: scaleX(1);
+}
+
+button {
+    margin-top: 80px;
+    background: transparent;
+    border: 1px solid #d6b876;
+    color: #d6b876;
+    padding: 15px 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 1;
+    position: relative;
+    animation: fadeIn 2s ease 1s backwards;
+    margin-bottom: 60px;
+}
+
+button:hover {
+    background: #d6b876;
+    color: #0b111a;
+    box-shadow: 0 0 30px rgba(214, 184, 118, 0.6);
+    letter-spacing: 6px;
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes slideDownFade {
+    from { opacity: 0; transform: translateY(-50px); filter: blur(10px); }
+    to   { opacity: 1; transform: translateY(0);     filter: blur(0); }
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(50px); filter: blur(10px); }
+    to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: scale(0.8) translateY(20px); }
+    to   { opacity: 1; transform: scale(1)   translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
