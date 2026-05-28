@@ -7,14 +7,6 @@
   },
   "routes": [
     { "src": "/(css|img|js)/(.*)", "dest": "/$1/$2" },
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/test", "dest": "/api/test.php" },
-    { "src": "/menu", "dest": "/api/menu.php" },
-    { "src": "/jogos", "dest": "/api/jogos.php" },
-    { "src": "/acao", "dest": "/api/acao.php" },
-    { "src": "/gestao", "dest": "/api/gestao.php" },
-    { "src": "/editar", "dest": "/api/editar.php" },
-    { "src": "/excluir", "dest": "/api/excluir.php" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }

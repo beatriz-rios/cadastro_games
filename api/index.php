@@ -1,33 +1,59 @@
 <?php
+// Roteador Principal para Vercel
 session_start();
-if($_POST){
-    $u = $_POST['u'];
-    $s = $_POST['s'];
 
-   if($u == 'Admin' ||   $u == 'Beatriz' && $s == '123'){
-    $_SESSION['usuario'] = $u;
-    header("location: /menu.php");
-   }else{
-    echo"Erro no usuario ou senha!";
-   }
+// Obter o caminho da requisição
+$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$request = preg_replace('#^/api#', '', $request);
+$request = trim($request, '/');
+
+// Query string
+$queryString = $_SERVER['QUERY_STRING'] ?? '';
+if ($queryString) {
+    parse_str($queryString, $_GET);
 }
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-    <link rel="stylesheet" href="/css/index.css">
-</head>
-<body>
-    <form method="post">
-    <h1>Página de login</h1> 
-    <label >Usuários:</label>
-    <input type="text" name="u" required>
-    <label >Senha:</label>
-    <input type="password" name="s" required>
-   <button>Entrar</button>
-    </form>
-</body>
-</html>
+
+// Ignorar estáticos
+if (preg_match('#^(css|img|js)/#', $request)) {
+    http_response_code(404);
+    exit();
+}
+
+// Limpar extensão
+$request = str_replace('.php', '', $request);
+if (empty($request)) {
+    $request = 'index';
+}
+
+// Mapear páginas
+$pageMap = [
+    '' => 'login',
+    'index' => 'login',
+    'menu' => 'menu',
+    'jogos' => 'jogos',
+    'acao' => 'acao',
+    'gestao' => 'gestao',
+    'editar' => 'editar',
+    'excluir' => 'excluir',
+    'test' => 'test'
+];
+
+$page = $pageMap[$request] ?? null;
+
+if ($page && $page !== 'test') {
+    $filePath = __DIR__ . '/pages/' . $page . '.php';
+} elseif ($page === 'test') {
+    $filePath = __DIR__ . '/test.php';
+} else {
+    http_response_code(404);
+    echo "404 - " . htmlspecialchars($request);
+    exit();
+}
+
+if (file_exists($filePath)) {
+    include $filePath;
+} else {
+    http_response_code(404);
+    echo "404 Arquivo não existe";
+    exit();
+}

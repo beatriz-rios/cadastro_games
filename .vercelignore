@@ -1,9 +1,11 @@
 php/
 sql/
 DEPLOY.md
-.git
+.git/
+.gitignore
+.htaccess
+index.html
 .env
 .DS_Store
 node_modules/
 *.sql
-.gitignore
