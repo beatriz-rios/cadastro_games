@@ -19,6 +19,7 @@ if($_POST){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" href="../css/index.css">
+</head>
 <body>
     <form method="post">
     <h1>Página de login</h1> 
@@ -27,6 +28,6 @@ if($_POST){
     <label >Senha:</label>
     <input type="password" name="s" required>
    <button>Entrar</button>
-   </form>
+    </form>
 </body>
 </html>

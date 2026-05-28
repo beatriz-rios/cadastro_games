@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-bt">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,8 +79,8 @@ $servername = "localhost";
             echo "<td>" . $row['lancamento'] . "</td>";
             echo "<td>" . $row['usuario'] . "</td>";
             echo "<td>" . $row['estoque_total'] . "</td>";
-            echo"<td> <a href='editar.php?id=" . $row['idgame']. "'>Editar</a>|
-            <a href='excluir.php?id=" . $row['idgame']. "'>Excluir </a> </td>";
+            echo"<td> <a href='/cadastro_games/php/editar.php?id=" . $row['idgame']. "'>Editar</a>|
+            <a href='/cadastro_games//php/excluir.php?id=" . $row['idgame']. "'>Excluir </a> </td>";
             echo"</tr>";
         }
         

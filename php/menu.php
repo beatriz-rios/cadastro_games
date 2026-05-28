@@ -11,7 +11,7 @@ if(!isset($_SESSION['usuario'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>menu</title>
-    
+    <link rel="stylesheet" href="../css/menu.css">
 </head>
 <body>
 
@@ -29,8 +29,6 @@ if(!isset($_SESSION['usuario'])){
     <h1>Menu Principal</h1>
     <h2>Bem vindo(a) Player <?php echo $_SESSION['usuario'];?>!</h2>
     <ul>
-    <h2>Bem vindo <?php echo $_SESSION['usuario'];?>!</h2>
-     <ul>
         <li><a href="jogos.php">Cadastro de Jogos</a></li>
         <li><a href="acao.php">Ação</a></li>
         <li><a href="menu.php">Tela Principal</a></li>
