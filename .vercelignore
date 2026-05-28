@@ -1,0 +1,7 @@
+php/
+sql/
+*.md
+.git
+.env
+.DS_Store
+node_modules/
