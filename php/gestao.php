@@ -54,6 +54,7 @@ $servername = "localhost";
 
 
         echo"<table border='2'>";
+        
         echo"<tr> <th>ID</th>
         <th>Jogos</th>
         <th>Preço</th>
